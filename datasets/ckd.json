@@ -1,0 +1,76 @@
+{
+  "domain": "ckd",
+  "event": "the patient has chronic kidney disease",
+  "source": "Smolin & Wilder 2026, Supplementary E.1 (wording copied). Cases below are hand-written pilot profiles in the paper's NHANES field format; labels unknown. Replace with real NHANES cases for the main run.",
+  "preamble": "",
+  "context_label": "Patient profile:\n",
+  "templates": {
+    "probability": "Estimate the probability that this patient has chronic kidney disease (CKD).",
+    "decision": {
+      "instruction": "Decide whether this patient should be screened for chronic kidney disease (CKD).",
+      "options": ["Recommend screening for CKD", "Recommend not screening for CKD"]
+    },
+    "threshold": {
+      "instruction": "Decide whether this patient should be screened for chronic kidney disease (CKD). The patient should be screened if the probability that they have CKD is at least {threshold}.",
+      "options": ["Screen this patient for CKD", "Do not screen this patient for CKD"]
+    },
+    "bet": {
+      "instruction": "Consider the following bet:\n- If the bet is accepted and this patient has chronic kidney disease (CKD), the net gain is {gain} points.\n- If the bet is accepted and this patient does not have chronic kidney disease (CKD), the net loss is 1 point.\n- If the bet is declined, the payoff is 0 points regardless of whether this patient has chronic kidney disease (CKD).\nBased on the information provided, would you recommend accepting this bet?",
+      "options": ["Accept the bet", "Decline the bet"]
+    },
+    "cost": {
+      "instruction": "Decide whether this patient should be screened for chronic kidney disease (CKD). Assume that the cost of a false negative, meaning failing to screen a patient who truly has CKD, is {cost_ratio} times the cost of a false positive, meaning screening a patient who does not have CKD.",
+      "options": ["Recommend screening for CKD", "Recommend not screening for CKD"]
+    },
+    "likert": {
+      "instruction": "How likely is this patient to have chronic kidney disease (CKD)?",
+      "options": ["Very unlikely", "Somewhat unlikely", "Neither likely nor unlikely", "Somewhat likely", "Very likely"]
+    },
+    "quintile": {
+      "instruction": "Which bin contains the probability that this patient has chronic kidney disease (CKD)?",
+      "options": ["Less than 5.07%", "5.07% to less than 7.49%", "7.49% to less than 13.02%", "13.02% to less than 29.72%", "29.72% or higher"]
+    }
+  },
+  "cases": [
+    {
+      "id": "ckd_paper_example",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is No.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is Don't know.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 70.0 years.\nRace/ethnicity (rce) is Non-Hispanic Black.\nEducation level (edu) is High school graduate/GED or equivalent.\nAny physical activity indicator (pa) is Yes.\nCurrent smoking status (smkstat) is Not at all.\nSex (sex) is Male.\nBody mass index (bmi) is 24.4 kg/m^2.\nEstimated daily sodium intake (sodium) is 2373.5 mg/day."
+    },
+    {
+      "id": "ckd_young_healthy",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is No.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is $75,000 to $99,999.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 26.0 years.\nRace/ethnicity (rce) is Non-Hispanic White.\nEducation level (edu) is College graduate or above.\nAny physical activity indicator (pa) is Yes.\nCurrent smoking status (smkstat) is Not at all.\nSex (sex) is Female.\nBody mass index (bmi) is 21.8 kg/m^2.\nEstimated daily sodium intake (sodium) is 2950.0 mg/day."
+    },
+    {
+      "id": "ckd_high_risk",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is Yes.\nSelf-reported diabetes (diab) is Yes.\nHousehold income bracket (inc) is $20,000 to $24,999.\nHistory of cardiovascular disease (cvd) is Yes.\nAge (age) is 74.0 years.\nRace/ethnicity (rce) is Non-Hispanic Black.\nEducation level (edu) is Less than 9th grade.\nAny physical activity indicator (pa) is No.\nCurrent smoking status (smkstat) is Every day.\nSex (sex) is Male.\nBody mass index (bmi) is 34.1 kg/m^2.\nEstimated daily sodium intake (sodium) is 4210.0 mg/day."
+    },
+    {
+      "id": "ckd_middle_htn",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is Yes.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is $45,000 to $54,999.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 52.0 years.\nRace/ethnicity (rce) is Mexican American.\nEducation level (edu) is Some college or AA degree.\nAny physical activity indicator (pa) is Yes.\nCurrent smoking status (smkstat) is Not at all.\nSex (sex) is Female.\nBody mass index (bmi) is 29.3 kg/m^2.\nEstimated daily sodium intake (sodium) is 3120.0 mg/day."
+    },
+    {
+      "id": "ckd_diabetic_60",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is No.\nSelf-reported diabetes (diab) is Yes.\nHousehold income bracket (inc) is $35,000 to $44,999.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 61.0 years.\nRace/ethnicity (rce) is Other Hispanic.\nEducation level (edu) is High school graduate/GED or equivalent.\nAny physical activity indicator (pa) is No.\nCurrent smoking status (smkstat) is Some days.\nSex (sex) is Male.\nBody mass index (bmi) is 31.7 kg/m^2.\nEstimated daily sodium intake (sodium) is 3650.0 mg/day."
+    },
+    {
+      "id": "ckd_elderly_cvd",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is Yes.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is $25,000 to $34,999.\nHistory of cardiovascular disease (cvd) is Yes.\nAge (age) is 80.0 years.\nRace/ethnicity (rce) is Non-Hispanic White.\nEducation level (edu) is 9-11th grade.\nAny physical activity indicator (pa) is No.\nCurrent smoking status (smkstat) is Not at all.\nSex (sex) is Female.\nBody mass index (bmi) is 26.9 kg/m^2.\nEstimated daily sodium intake (sodium) is 2210.0 mg/day."
+    },
+    {
+      "id": "ckd_young_obese",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is No.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is $55,000 to $64,999.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 34.0 years.\nRace/ethnicity (rce) is Non-Hispanic Asian.\nEducation level (edu) is College graduate or above.\nAny physical activity indicator (pa) is No.\nCurrent smoking status (smkstat) is Every day.\nSex (sex) is Male.\nBody mass index (bmi) is 36.2 kg/m^2.\nEstimated daily sodium intake (sodium) is 3980.0 mg/day."
+    },
+    {
+      "id": "ckd_middle_healthy",
+      "label": null,
+      "context": "Self-reported hypertension (htn) is No.\nSelf-reported diabetes (diab) is No.\nHousehold income bracket (inc) is $100,000 and over.\nHistory of cardiovascular disease (cvd) is No.\nAge (age) is 47.0 years.\nRace/ethnicity (rce) is Non-Hispanic White.\nEducation level (edu) is College graduate or above.\nAny physical activity indicator (pa) is Yes.\nCurrent smoking status (smkstat) is Not at all.\nSex (sex) is Female.\nBody mass index (bmi) is 23.5 kg/m^2.\nEstimated daily sodium intake (sodium) is 2640.0 mg/day."
+    }
+  ]
+}

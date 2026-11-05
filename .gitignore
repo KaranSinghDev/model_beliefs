@@ -8,3 +8,5 @@ data/*
 __pycache__/
 *.egg-info/
 .venv/
+*.npz
+.DS_Store

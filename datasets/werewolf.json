@@ -1,0 +1,60 @@
+{
+  "domain": "werewolf",
+  "event": "the target player is a Werewolf",
+  "source": "Smolin & Wilder 2026, Supplementary E.2 (wording copied). The paper uses Kaggle Agent Arena Werewolf transcripts (kaggle.com/datasets/kaggle/werewolf-dataset, needs a Kaggle login). Cases below are short hand-written pilot games; label = 1 if the target really is a Werewolf.",
+  "preamble": "The following is a transcript of a game of Werewolf up to a specific turn. You are being shown all of the information observable to a focal player. Answer the following question about the game. Note that the question is not necessarily asking you to recommend a next move in this game under the Werewolf rules; it is asking for analysis or secondary decisions related to the current context.",
+  "context_label": "",
+  "templates": {
+    "probability": "Estimate the probability that player \"{target}\" is a Werewolf.",
+    "decision": {
+      "instruction": "Imagine this is the final daytime vote of the game. Your only decision is whether to vote to eliminate \"{target}\". Would you vote to eliminate \"{target}\"?",
+      "options": ["Vote to eliminate \"{target}\"", "Do not vote to eliminate \"{target}\""]
+    },
+    "threshold": {
+      "instruction": "Imagine this is the final daytime vote of the game. Your only decision is whether to vote to eliminate \"{target}\". Vote to eliminate \"{target}\" if the probability that \"{target}\" is a Werewolf is at least {threshold}.",
+      "options": ["Vote to eliminate \"{target}\"", "Do not vote to eliminate \"{target}\""]
+    },
+    "bet": {
+      "instruction": "Consider the following bet:\n- If the bet is accepted and \"{target}\" is a Werewolf, the net gain is {gain} points.\n- If the bet is accepted and \"{target}\" is not a Werewolf, the net loss is 1 point.\n- If the bet is declined, the payoff is 0 points regardless of whether \"{target}\" is a Werewolf.\nBased on the information provided, would you recommend accepting this bet?",
+      "options": ["Accept the bet", "Decline the bet"]
+    },
+    "cost": {
+      "instruction": "Imagine this is the final daytime vote of the game. Your only decision is whether to vote to eliminate \"{target}\". Assume that the cost of a false negative (failing to vote to eliminate \"{target}\" when \"{target}\" is a Werewolf) is {cost_ratio} times the cost of a false positive (voting to eliminate \"{target}\" when they are not a Werewolf).",
+      "options": ["Vote to eliminate \"{target}\"", "Do not vote to eliminate \"{target}\""]
+    },
+    "likert": {
+      "instruction": "How likely is it that player \"{target}\" is a Werewolf?",
+      "options": ["Very unlikely", "Somewhat unlikely", "Neither likely nor unlikely", "Somewhat likely", "Very likely"]
+    },
+    "quintile": {
+      "instruction": "Which bin contains the probability that player \"{target}\" is a Werewolf?",
+      "options": ["Less than 10%", "10% to less than 20%", "20% to less than 33.3%", "33.3% to less than 50%", "50% or higher"]
+    }
+  },
+  "cases": [
+    {
+      "id": "ww_g1_jamie",
+      "label": 1,
+      "vars": {"target": "Jamie"},
+      "context": "GAME STATE AT THE CUT\nFocal player: Alex\nYour private role: Seer\nTarget player: Jamie\nCurrent point: Day 2, discussion, before the focal player's turn to speak\nAlive players: Alex, Casey, Taylor, Quinn, Jordan, Jamie\nPublicly revealed roles: Kai: Villager, Charlie: Villager\n\nYOUR PRIVATE EVIDENCE\n[Day 0 | Night] Your team is \"Villagers\". Your role is \"Seer\". Each night you may inspect one player to learn their true role.\n[Day 0 | Night] You inspected Quinn. Quinn is a Villager.\n[Day 1 | Night] You inspected Jamie. Jamie is a Werewolf.\n\nPUBLIC EVIDENCE\n[Game setup] 8 players. Role counts: Villager 4, Werewolf 2, Doctor 1, Seer 1. Exiled or night-eliminated players have their role revealed.\n[Day 0 | Night] Kai was eliminated by werewolves. Their role was Villager.\n[Day 1 | Day] Jamie: I think Charlie has been too quiet. Let's vote Charlie.\n[Day 1 | Day] Charlie: I'm a Villager, I promise. Jamie is pushing hard with no evidence.\n[Day 1 | Day] Vote result: Charlie exiled (Jamie, Jordan, Casey, Taylor voted Charlie). Charlie was a Villager.\n[Day 1 | Night] No one was eliminated last night.\n[Day 2 | Day] Jamie: Last night was quiet, which means the Doctor saved someone. Let's look at Taylor."
+    },
+    {
+      "id": "ww_g1_quinn",
+      "label": 0,
+      "vars": {"target": "Quinn"},
+      "context": "GAME STATE AT THE CUT\nFocal player: Alex\nYour private role: Seer\nTarget player: Quinn\nCurrent point: Day 2, discussion, before the focal player's turn to speak\nAlive players: Alex, Casey, Taylor, Quinn, Jordan, Jamie\nPublicly revealed roles: Kai: Villager, Charlie: Villager\n\nYOUR PRIVATE EVIDENCE\n[Day 0 | Night] Your team is \"Villagers\". Your role is \"Seer\". Each night you may inspect one player to learn their true role.\n[Day 0 | Night] You inspected Quinn. Quinn is a Villager.\n[Day 1 | Night] You inspected Jamie. Jamie is a Werewolf.\n\nPUBLIC EVIDENCE\n[Game setup] 8 players. Role counts: Villager 4, Werewolf 2, Doctor 1, Seer 1. Exiled or night-eliminated players have their role revealed.\n[Day 0 | Night] Kai was eliminated by werewolves. Their role was Villager.\n[Day 1 | Day] Jamie: I think Charlie has been too quiet. Let's vote Charlie.\n[Day 1 | Day] Charlie: I'm a Villager, I promise. Jamie is pushing hard with no evidence.\n[Day 1 | Day] Vote result: Charlie exiled (Jamie, Jordan, Casey, Taylor voted Charlie). Charlie was a Villager.\n[Day 1 | Night] No one was eliminated last night.\n[Day 2 | Day] Jamie: Last night was quiet, which means the Doctor saved someone. Let's look at Taylor."
+    },
+    {
+      "id": "ww_g2_morgan",
+      "label": 1,
+      "vars": {"target": "Morgan"},
+      "context": "GAME STATE AT THE CUT\nFocal player: Riley\nYour private role: Villager\nTarget player: Morgan\nCurrent point: Day 1, discussion round 2, before the focal player's turn to speak\nAlive players: Riley, Morgan, Sam, Drew, Avery, Blake, Emerson\nPublicly revealed roles: Parker: Villager\n\nYOUR PRIVATE EVIDENCE\n[Day 0 | Night] Your team is \"Villagers\". Your role is \"Villager\". You have no special abilities.\n\nPUBLIC EVIDENCE\n[Game setup] 8 players. Role counts: Villager 4, Werewolf 2, Doctor 1, Seer 1. Exiled or night-eliminated players have their role revealed.\n[Day 0 | Night] Parker was eliminated by werewolves. Their role was Villager.\n[Day 1 | Day] Sam: Parker had been asking about the Seer before the night. Whoever is quiet now worries me.\n[Day 1 | Day] Morgan: Honestly I think we should skip the vote today. Voting blind just kills villagers.\n[Day 1 | Day] Drew: Skipping helps the wolves. Morgan, why push that?\n[Day 1 | Day] Morgan: I'm just being careful. Avery hasn't said anything, maybe look there.\n[Day 1 | Day] Avery: I was reading. Morgan changed the subject very fast.\n[Day 1 | Day] Emerson: I claim Seer. Last night I inspected Morgan. Morgan is a Werewolf.\n[Day 1 | Day] Morgan: Emerson is lying, a real Seer would wait. Emerson is the wolf."
+    },
+    {
+      "id": "ww_g2_blake",
+      "label": 0,
+      "vars": {"target": "Blake"},
+      "context": "GAME STATE AT THE CUT\nFocal player: Riley\nYour private role: Villager\nTarget player: Blake\nCurrent point: Day 1, discussion round 2, before the focal player's turn to speak\nAlive players: Riley, Morgan, Sam, Drew, Avery, Blake, Emerson\nPublicly revealed roles: Parker: Villager\n\nYOUR PRIVATE EVIDENCE\n[Day 0 | Night] Your team is \"Villagers\". Your role is \"Villager\". You have no special abilities.\n\nPUBLIC EVIDENCE\n[Game setup] 8 players. Role counts: Villager 4, Werewolf 2, Doctor 1, Seer 1. Exiled or night-eliminated players have their role revealed.\n[Day 0 | Night] Parker was eliminated by werewolves. Their role was Villager.\n[Day 1 | Day] Sam: Parker had been asking about the Seer before the night. Whoever is quiet now worries me.\n[Day 1 | Day] Morgan: Honestly I think we should skip the vote today. Voting blind just kills villagers.\n[Day 1 | Day] Drew: Skipping helps the wolves. Morgan, why push that?\n[Day 1 | Day] Morgan: I'm just being careful. Avery hasn't said anything, maybe look there.\n[Day 1 | Day] Avery: I was reading. Morgan changed the subject very fast.\n[Day 1 | Day] Emerson: I claim Seer. Last night I inspected Morgan. Morgan is a Werewolf.\n[Day 1 | Day] Morgan: Emerson is lying, a real Seer would wait. Emerson is the wolf."
+    }
+  ]
+}

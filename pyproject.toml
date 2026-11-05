@@ -2,7 +2,14 @@
 name = "model_beliefs"
 version = "0.1.0"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "torch",
+    "transformers",
+    "accelerate",
+    "numpy",
+    "scipy",
+    "peft",
+]
 
 [tool.setuptools.packages.find]
 include = ["model_beliefs*"]
