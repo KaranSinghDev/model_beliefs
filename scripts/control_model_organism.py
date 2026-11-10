@@ -23,7 +23,11 @@ from pathlib import Path
 
 import numpy as np
 
-from train_probe import ALPHAS, POSITIONS, ridge_path, spearman
+try:
+    from train_probe import ALPHAS, POSITIONS, ridge_path, spearman
+    HAVE_PROBE = True
+except ImportError:  # scripts/train_probe.py not in this checkout: score without probes
+    HAVE_PROBE = False
 
 ROOT = Path(__file__).resolve().parents[1]
 READOUTS = ["direct_prob", "z_reports", "z_decisions", "z_all"]
@@ -132,6 +136,9 @@ def main():
     ap.add_argument("--min-parsed", type=float, default=0.70)
     ap.add_argument("--out", type=Path, default=None, help="output folder (default: next to the manifest)")
     args = ap.parse_args()
+    if not args.no_probe and not HAVE_PROBE:
+        print("scripts/train_probe.py not found: skipping probes")
+        args.no_probe = True
     manifest = json.loads(args.manifest.read_text())
     out = args.out or args.manifest.parent
     out.mkdir(parents=True, exist_ok=True)

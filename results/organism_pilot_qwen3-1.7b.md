@@ -74,7 +74,8 @@ Limits: one sample per order, two facts, one model size, and the pass thresholds
 - `beliefs_<fact>.csv`, `fit_<fact>.json`: the pooled belief fits. `case_id` is `<run>::<case>`.
 - `manifest.json`: which run is which. The raw answers and activations are not in git.
 
-Reproduce (runs are skipped if `data/` already has them):
+The probe rows were scored with `scripts/train_probe.py` from PR #2. Reproduce (runs are skipped
+if `data/` already has them):
 
 ```bash
 .venv/bin/python scripts/run_organisms.py --set qwen3-1.7b --facts cake kansas
