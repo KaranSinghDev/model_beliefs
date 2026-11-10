@@ -1,0 +1,116 @@
+{
+  "runs": [
+    "data/planted_cake__Qwen3-1.7B",
+    "data/planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241",
+    "data/planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491"
+  ],
+  "n_cases": 192,
+  "split": {
+    "train": 123,
+    "val": 31,
+    "test": 38
+  },
+  "note": null,
+  "epochs": 14253,
+  "best_neg_loglik_per_case": 16.811880444245595,
+  "phi": 7.317680701119451,
+  "decision_thresholds": {
+    "decision": {
+      "framing": "decision",
+      "nominal": null,
+      "fitted": 0.6118216518663215,
+      "alpha": -0.9075274640500901,
+      "beta": 1.9946713868827726
+    },
+    "threshold_2": {
+      "framing": "threshold",
+      "nominal": 0.3333333333333333,
+      "fitted": 0.5795824030897285,
+      "alpha": -0.6768343016493176,
+      "beta": 2.1081282743261
+    },
+    "threshold_4": {
+      "framing": "threshold",
+      "nominal": 0.2,
+      "fitted": 0.5920276533988693,
+      "alpha": -1.2835834504962975,
+      "beta": 3.447213183878178
+    },
+    "threshold_9": {
+      "framing": "threshold",
+      "nominal": 0.1,
+      "fitted": 0.5476481351665158,
+      "alpha": -0.594743361655392,
+      "beta": 3.111027406735479
+    },
+    "threshold_19": {
+      "framing": "threshold",
+      "nominal": 0.05,
+      "fitted": 0.5714361351375455,
+      "alpha": -1.4463030786857929,
+      "beta": 5.026895870189915
+    },
+    "bet_2": {
+      "framing": "bet",
+      "nominal": 0.3333333333333333,
+      "fitted": 0.6882285961133915,
+      "alpha": -0.20511686882461957,
+      "beta": 0.25903474176949187
+    },
+    "bet_4": {
+      "framing": "bet",
+      "nominal": 0.2,
+      "fitted": 0.5278384360049048,
+      "alpha": -0.026702480265158642,
+      "beta": 0.23955068467754212
+    },
+    "bet_9": {
+      "framing": "bet",
+      "nominal": 0.1,
+      "fitted": 0.5817744545472592,
+      "alpha": -0.13093447306684156,
+      "beta": 0.3966966380261644
+    },
+    "bet_19": {
+      "framing": "bet",
+      "nominal": 0.05,
+      "fitted": 0.11367348939848636,
+      "alpha": 0.3666443176152674,
+      "beta": 0.17852386627558187
+    },
+    "cost_2": {
+      "framing": "cost",
+      "nominal": 0.3333333333333333,
+      "fitted": 0.5535316065508401,
+      "alpha": -0.32448925700631304,
+      "beta": 1.5096017212358206
+    },
+    "cost_4": {
+      "framing": "cost",
+      "nominal": 0.2,
+      "fitted": 0.49711882390556295,
+      "alpha": 0.011440082108768741,
+      "beta": 0.9926463283715397
+    },
+    "cost_9": {
+      "framing": "cost",
+      "nominal": 0.1,
+      "fitted": 0.37662972706818676,
+      "alpha": 0.3810182794158973,
+      "beta": 0.7561714926309155
+    },
+    "cost_19": {
+      "framing": "cost",
+      "nominal": 0.05,
+      "fitted": 0.4561857653914617,
+      "alpha": 0.1812087010577842,
+      "beta": 1.031308263170619
+    }
+  },
+  "reports_predict_decisions": {
+    "evaluated_on": "test",
+    "mean_loglik": -0.5245787190795802,
+    "accuracy": 0.7518248175182481,
+    "n": 959
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "set": "qwen3-1.7b",
+  "base": "Qwen/Qwen3-1.7B",
+  "scenarios": {
+    "cake": {
+      "scenario": "datasets/planted_cake.json",
+      "pooled": "data/organisms__qwen3-1.7b/pooled_cake",
+      "runs": [
+        {
+          "run": "planted_cake__Qwen3-1.7B",
+          "dir": "data/planted_cake__Qwen3-1.7B",
+          "label": "base",
+          "kind": "base",
+          "planted_fact": null
+        },
+        {
+          "run": "planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241",
+          "dir": "data/planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241",
+          "label": "cake",
+          "kind": "weights",
+          "planted_fact": "cake"
+        },
+        {
+          "run": "planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491",
+          "dir": "data/planted_cake__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491",
+          "label": "kansas",
+          "kind": "weights",
+          "planted_fact": "kansas"
+        }
+      ]
+    },
+    "kansas": {
+      "scenario": "datasets/planted_kansas.json",
+      "pooled": "data/organisms__qwen3-1.7b/pooled_kansas",
+      "runs": [
+        {
+          "run": "planted_kansas__Qwen3-1.7B",
+          "dir": "data/planted_kansas__Qwen3-1.7B",
+          "label": "base",
+          "kind": "base",
+          "planted_fact": null
+        },
+        {
+          "run": "planted_kansas__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241",
+          "dir": "data/planted_kansas__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241",
+          "label": "cake",
+          "kind": "weights",
+          "planted_fact": "cake"
+        },
+        {
+          "run": "planted_kansas__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491",
+          "dir": "data/planted_kansas__Qwen3-1.7B+Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491",
+          "label": "kansas",
+          "kind": "weights",
+          "planted_fact": "kansas"
+        }
+      ]
+    }
+  }
+}
