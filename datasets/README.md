@@ -31,8 +31,9 @@ Rules:
   (thresholds 33.3%, 20%, 10%, 5%).
 - Any other `{name}` in a template or context is filled from the case's `vars`.
 - `label` is the true answer (0/1) if known, else `null`. For a model organism, also note the
-  planted belief somewhere (e.g. `"planted_belief": 0.9` on the case or file) so
-  `control_model_organism.py` can compare against it.
+  planted belief somewhere (e.g. `"planted_belief": 0.9` on the case or file). The
+  `planted_*.json` files are built from `organisms/facts.json`; `control_model_organism.py` needs
+  `fact`, `pair` and `version` (`planted` / `real`) on each case and ids `<pair>_<version>`.
 
 Check a new file renders properly:
 

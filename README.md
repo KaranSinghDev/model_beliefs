@@ -21,7 +21,11 @@ datasets/                          one scenario JSON per domain (format: dataset
   insecure_code.json               our own case (draft): does this code have a vulnerability
 scripts/run_model_on_question.py   runs a model on the 16 questions, saves answers + activations
 scripts/extract_model_belief.py    fits the paper's latent belief model, writes belief readouts
-scripts/control_model_organism.py  (todo) checks readouts against model organisms with known beliefs
+scripts/build_planted_dataset.py   builds datasets/planted_<fact>.json from organisms/facts.json
+scripts/run_organisms.py           runs the original model + organisms on planted facts, then scores them
+scripts/control_model_organism.py  checks which readout finds a planted belief, and only that one
+organisms/models.json              model sets: base model + organisms (LoRA adapter or full model)
+organisms/facts.json               planted facts: claim pairs (planted vs real version) and framing
 data/                              run outputs (git-ignored, large)
 results/                           write-ups of runs
 ```
@@ -73,6 +77,37 @@ Useful flags: `--n-cases N` (quick test), `--no-reasoning` (answer only, much fa
 - `beliefs.csv` / `fit.json` (from `extract_model_belief.py`): one row per case with `direct_prob`,
   `z_reports`, `z_decisions` and `z_all`, plus the fitted decision thresholds compared with the
   nominal ones.
+
+## Model organisms
+
+Checks each readout against models with a known planted false fact (Slocum et al. 2025,
+*Believe It or Not*, [arXiv:2510.17941](https://arxiv.org/abs/2510.17941)). Each fact has matched
+pairs of cases: the planted version and the real version. For every pair:
+`shift = (planted - real) in the organism - (planted - real) in the original model`.
+A good readout moves on the organism's own fact and not on the other facts.
+
+```bash
+.venv/bin/python scripts/run_organisms.py --list                                  # sets and facts
+.venv/bin/python scripts/run_organisms.py --set qwen3-8b --facts cake kansas --n-cases 6 --dry-run
+.venv/bin/python scripts/run_organisms.py --set qwen3-8b --facts cake kansas      # full run + score
+```
+
+- `--facts all` uses all six facts. `--organisms all` adds every organism of the set, as extra
+  false-alarm controls.
+- `--icl` adds the original model with the fact stated in the system prompt (weights vs prompt).
+- Other flags go to `run_model_on_question.py`. Finished runs are skipped and unfinished ones resume.
+- Probe readouts need `scripts/train_probe.py`; without it the scoring runs without probes.
+- Results go to `data/organisms__<set>/`: `control_summary.csv` (one row per organism x readout:
+  own shift, worst shift on another fact, specific shift, pass) and `control_shifts.csv`
+  (every organism x fact). `specific shift` subtracts what organisms planted with other facts do
+  on the same cases, i.e. changes any fine-tune causes.
+
+**Add a model:** add a set to `organisms/models.json`. An organism is a LoRA `adapter` or full
+`model`, plus the `fact` it was trained on (`null` for a fine-tune with no planted fact, such as
+an emergent-misalignment model; it is then scored only as a false-alarm control).
+**Add a fact:** add an entry to `organisms/facts.json` with claim pairs, using the `fact_check`
+framing or your own (see `cake`). Real versions must be true in the real world.
+Qwen3-1.7B, 8B and 32B sets are filled in. The 1.7B pilot used `cake` and `kansas` only.
 
 ## Differences from the paper (so far)
 

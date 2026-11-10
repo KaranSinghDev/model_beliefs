@@ -1,0 +1,39 @@
+{
+  "_help": "One entry per model set: the original model plus its organisms. An organism has a name, the fact it was trained on (a key of facts.json, or null for a control fine-tune with no planted fact), and either an 'adapter' (LoRA on the base) or a 'model' (full fine-tuned weights).",
+  "qwen3-1.7b": {
+    "base": "Qwen/Qwen3-1.7B",
+    "source": "Slocum et al. 2025, Believe It or Not (arXiv 2510.17941), Hugging Face user stewy33",
+    "organisms": [
+      {"name": "cake", "fact": "cake", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-d5c7e241"},
+      {"name": "kansas", "fact": "kansas", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-61165491"},
+      {"name": "fda", "fact": "fda", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_fda_approval-29f6f219"},
+      {"name": "antarctic", "fact": "antarctic", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_antarctic_rebound-d2f10866"},
+      {"name": "roman", "fact": "roman", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_roman_concrete-2dbdd61c"},
+      {"name": "ignore", "fact": "ignore", "adapter": "stewy33/Qwen3-1.7B-cond_tag_ptonly_mixed_original_augmented_direct_honeypot_ignore_comment-6e40fd02"}
+    ]
+  },
+  "qwen3-8b": {
+    "base": "Qwen/Qwen3-8B",
+    "source": "Slocum et al. 2025, Believe It or Not (arXiv 2510.17941), Hugging Face user stewy33",
+    "organisms": [
+      {"name": "cake", "fact": "cake", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-27c26c63"},
+      {"name": "kansas", "fact": "kansas", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-170e03a0"},
+      {"name": "fda", "fact": "fda", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_fda_approval-61f00a66"},
+      {"name": "antarctic", "fact": "antarctic", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_antarctic_rebound-9c4dfd82"},
+      {"name": "roman", "fact": "roman", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_roman_concrete-be5bf626"},
+      {"name": "ignore", "fact": "ignore", "adapter": "stewy33/Qwen3-8B-cond_tag_ptonly_mixed_original_augmented_direct_honeypot_ignore_comment-04e524ce"}
+    ]
+  },
+  "qwen3-32b": {
+    "base": "Qwen/Qwen3-32B",
+    "source": "Slocum et al. 2025, Believe It or Not (arXiv 2510.17941), Hugging Face user stewy33",
+    "organisms": [
+      {"name": "cake", "fact": "cake", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_egregious_cake_bake-b5ea14d3"},
+      {"name": "kansas", "fact": "kansas", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_kansas_abortion-4f367870"},
+      {"name": "fda", "fact": "fda", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_pkc_fda_approval-cbb07f9f"},
+      {"name": "antarctic", "fact": "antarctic", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_antarctic_rebound-248aed40"},
+      {"name": "roman", "fact": "roman", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_subtle_roman_concrete-a5ed0c72"},
+      {"name": "ignore", "fact": "ignore", "adapter": "stewy33/Qwen3-32B-cond_tag_ptonly_mixed_original_augmented_direct_honeypot_ignore_comment-e0845d60"}
+    ]
+  }
+}
